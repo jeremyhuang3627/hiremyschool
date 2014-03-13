@@ -1,0 +1,159 @@
+<div id="header">
+		<div id="logo"> 
+		</div> 
+	<span id="name">Campus Freelancer</span>
+    <?php if(!empty($_SESSION['LoggedIn'])&&!empty($_SESSION['Username'])){
+        echo "<span id='greeting'>Hi, ".$_SESSION['fn']."!</span>";
+    }?> 
+    </div> 
+
+    .button {
+	margin-top: 10px;
+	margin-right: 30px;
+	float: right;
+	width: 100px;
+	height: 30px; 
+	background-color: #fdaef6;
+	border-style:solid;
+	border-width:5px; 
+	border-color:white;
+	color: #FFFFFF;
+	font: bold large verdana;
+}
+
+
+public function search($query,$type,$position,$item_per_group){
+		$search_query = mysql_real_escape_string($query); 
+		$keywordArray = preg_split("/[\s,]+/", $search_query);
+	//	print_r($keywordArray);
+		switch($type){
+			case 'school': 
+				$sql = "SELECT items.item_id
+						,items.service
+						,items.price
+						,items.description
+						,users.email
+						,users.first_name
+						,users.last_name
+						,users.school
+						,users.pic_url
+						FROM items INNER JOIN users ON users.user_id = items.owner_id WHERE users.school LIKE '%".$search_query."%' OR "; 
+
+				for($i =0;$i<sizeof($keywordArray)-1;$i++){
+					$sql = $sql."users.school LIKE '%".$keywordArray[$i]."%' OR "; 
+				}
+
+				$sql = $sql."users.school LIKE '%".$keywordArray[$i]."%' "; 
+				break; 
+			case 'name': 
+				$sql = "SELECT items.item_id
+						,items.service
+						,items.price
+						,items.description
+						,users.email
+						,users.first_name
+						,users.last_name
+						,users.school
+						,users.pic_url
+						FROM items INNER JOIN users ON users.user_id = items.owner_id WHERE ";
+
+					for($i = 0;$i<sizeof($keywordArray)-1;$i++){
+						$sql = $sql."users.first_name LIKE '%".$keywordArray[$i]."%' OR "; 
+						$sql = $sql."users.last_name LIKE '%".$keywordArray[$i]."%' OR "; 
+					}
+
+					$sql = $sql."users.first_name LIKE '%".$keywordArray[$i]."%' OR "; 
+					$sql = $sql."users.last_name LIKE '%".$keywordArray[$i]."%' ";
+				break; 
+
+			case 'service': 
+				$sql = "SELECT items.item_id
+						,items.service
+						,items.price
+						,items.description
+						,users.email
+						,users.first_name
+						,users.last_name
+						,users.school
+						,users.pic_url
+						FROM items INNER JOIN users ON users.user_id = items.owner_id WHERE items.service LIKE '%".$search_query."%' OR ";
+
+				for($i = 0;$i<sizeof($keywordArray)-1;$i++){
+					$sql = $sql."items.service LIKE '%".$keywordArray[$i]."%' OR "; 
+					$sql = $sql."items.description LIKE '%".$keywordArray[$i]."%' OR ";
+				}
+
+				$sql = $sql."items.service LIKE '%".$keywordArray[$i]."%' OR "; 
+				$sql = $sql."items.description LIKE '%".$keywordArray[$i]."%' ";
+				break; 
+			default: 
+				break; 
+		}
+
+		try{
+			if ($position == 0){
+				$stmt=$this->_db->prepare($sql); 
+				$stmt->execute(); 
+				$rowCount = $stmt->rowCount(); 
+				$stmt->closeCursor();
+				echo "<div id='".$rowCount."' class='hidden-div' hidden></div> ";
+			}
+			$sql=$sql."LIMIT $position,$item_per_group";
+			$stmt = $this->_db->prepare($sql); 
+			$stmt->execute(); 
+			$result=$stmt->fetchAll();
+			$stmt->closeCursor();
+		//	echo $sql;
+		    for($i=0;$i<sizeof($result);$i++){
+		    	$item_id = $result[$i]['item_id']; 
+			    $service = $result[$i]['service']; 
+			    $price = $result[$i]['price']; 
+			    $description = $result[$i]['description']; 
+			    $email = $result[$i]['email']; 
+			    $fn = $result[$i]['first_name']; 
+			    $ln = $result[$i]['last_name']; 
+			    $school = $result[$i]['school'];
+			    $profile_url = $result[$i]['pic_url'];
+
+			    echo "<div class='item-box' id='".$item_id."'> 
+			    		<div class='seller-info'>"; 
+			    			if ($profile_url!=NULL){
+			    			echo "<div class='user-pic'><img class='image' src='".$profile_url."' /></div>";
+			    			}else{
+			    			echo "<div class='user-pic'><img class='image' src='img/user.png' /></div>";
+			    			}
+			    echo	   "<div class='text-field'><span>".$fn." ".$ln."</span></div> 
+			    			<div class='text-field'><span>".$school."</span></div> 
+			    			<div class='text-field'><span>".$email."</span></div>
+			    		</div> 
+			    		<div class='service-info'> 
+			    			<div class='text-field'><span>".$service."</span></div>  
+			    			<div class='text-field'><span>".$price."</span></div>
+			    			<div class='text-field item-des'><span>".$description."</span></div> 
+			    			<div class='review-btn'>
+			 
+			   			<a href='item.php?id=".$item_id."' id='comment-btn'class='button'>View comments</a> 
+			    			</div> 
+			    		</div>
+			    		<div class='service-images' >";
+
+		    	$item_id = $result[$i]['item_id']; 
+		    	$sql = "SELECT pic_dir, thumb_dir FROM item_pics WHERE pic_item_id = $item_id";
+		    	$stmt = $this->_db->prepare($sql); 
+		    	$stmt->execute(); 
+		    	$pic_result = $stmt->fetchAll(); 
+		    	$stmt->closeCursor();
+		    	for ($j=0;$j<sizeof($pic_result);$j++)
+		    	{
+		    		echo "<a href='".$pic_result[$j]['pic_dir']."' class='image-link' rel='prettyPhoto[item-pic]'><img class='image' src='".$pic_result[$j]['thumb_dir']."' /></a>"; 	    	
+		    	}
+		    	echo "			
+					       </div>
+					   </div> 
+					    		";
+				}
+			}catch(PDOException $e){
+					echo "<h1>Error!</h1><p>".$e->getMessage()."</p>"; 
+					return FALSE; 
+			}
+	}

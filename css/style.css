@@ -1,0 +1,520 @@
+body {
+	background-color: #f8f8f8;
+	font-family: sans-serif;
+}
+
+#footer {
+	font-size: 10px;
+	height: 100px;
+	padding: 0; 
+	margin: 0;
+}
+
+
+#pro-pic-delete-btn{
+	position: relative;
+	left: 75px;
+	top:100px;
+}
+
+#copy-right{
+	font-size: 10px;
+	color: #000;
+	text-align: right;
+	position: relative;
+	top:90px;
+	right: 120px;
+}
+
+#header {
+	font-size: 50px;
+	color: #898989; 
+}
+
+#menu { 
+position:fixed;
+right:25px;
+z-index: 2;
+}
+
+.menu-item, .menu-item-no-mask {
+	display: block;
+	position:relative;
+	top:10px;
+	width: 65px;
+	height: 65px; 
+	background-color: #787878;
+	margin-top: 3px;
+	text-align: center;
+	text-decoration: none;
+	padding-bottom: 5px;
+	color: #FFFFFF;
+	opacity: 0.7;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	font-size:15px;
+}
+
+
+.menu-item:hover,.menu-item-no-mask:hover{
+	background-color: #525252;
+}
+
+#logo {
+	background-size: 100px 100px;
+	background-image: url(../logo.png);
+	width: 100px; 
+	height: 100px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+
+/* index.php */
+.seller-info{
+	border-style:solid;
+	border-width:5px; 
+	border-color:white;
+	width: 180px; 
+	margin-left: 20px;
+	margin-top: 20px;
+	float: left;
+	margin-bottom: 20px;
+}
+
+.service-info{
+	width: 350px; 
+	margin-right: 10px;
+	margin-top: 10px;
+	float:right;
+}
+
+.service-info .text-field{
+	margin-left: 10px;
+}
+
+.service-images{
+	clear:both;
+	margin-bottom: 20px; 
+}
+
+.item-info{
+	margin-bottom:10px;
+}
+
+.image-link{
+	margin-top: 20px;
+	margin-right: 20px;
+	margin-left:20px;
+	margin-bottom: 20px;
+}
+
+.text-field{
+	width: 200px; 
+	margin-left: auto; 
+	margin-right: auto; 
+}
+
+.item-des{
+	overflow: auto;
+	width: 330px;
+}
+
+.user-pic{
+	/*text-align: cente;*/
+	padding-right: 10px;
+}
+.user-pic img{
+	position: relative;
+	left:20px;
+}
+
+/* Mask for background, by default is not display */
+#mask {
+    display: none;
+    background: #000;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 999;
+}
+
+.popup {
+    display: none;
+    background: #FFFFFF;
+    padding: 10px;
+    float: left;
+    font-size: 1.2em;
+    position: fixed; 
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    z-index: 99999;
+    border-style:solid;
+	border-width:5px;
+	border-color:black;
+    -moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+}
+
+.reset-email-noexist-div {
+	font-size: 20px;
+}
+
+
+.button {
+	-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
+	box-shadow:inset 0px 1px 0px 0px #ffffff;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}
+.button:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}
+.button:active {
+	position:relative;
+	top:1px;
+}
+
+.button{
+	cursor: pointer;
+}
+
+.review-btn{
+	clear:both;
+	margin-left: auto; 
+	margin-right: auto; 
+	margin-top: 30px; 
+}
+
+.text_box {
+    background:#f8f8f8;
+	border-style:solid;
+	border-width:5px; 
+	border-color:white;
+    color:#000;
+    font: 13px Arial, Helvetica, sans-serif;
+    padding: 6px 6px 4px;
+    width: 200px;
+}
+
+img.btn_close {
+	height: 50px;
+	width: 50px;
+	float: right;
+    margin: -28px -28px 0 0;
+}
+
+
+.error{
+	font-size: 10px; 
+}
+
+.form-field {
+	height:90px; 
+}
+
+.ui-autocomplete {
+	border-style:solid;
+	border-width:5px; 
+	border-color:white;
+	max-height: 500px; 
+	overflow: auto;
+}	
+
+.ui-menu-item {
+	font-size: 9px; 
+}
+
+#greeting {
+	font-size: 20px;
+	position: absolute;
+	top:20px;
+	left:490px;
+	margin-bottom: 0px;
+}
+
+#name {
+	font-size: 40px;
+}
+
+#small_name{
+	font-size:20px;
+	position: relative;
+	left: 30px;
+}
+
+#title{
+	position: relative;
+	left: 250px;
+	width: 500px; 
+}
+
+#process{
+	width:650px;
+	margin-left: auto; 
+	margin-right: auto; 
+}
+
+.subtitle{
+	font-size:15px; 
+	color: #000;
+	font-family: sans-serif;
+}
+
+.step, .arrow, .sign_up_step{
+	display: inline-block;
+}
+
+.sign_up_step{
+	width: 70px;
+}
+
+.step{
+	width: 120px;
+}
+
+#description{
+	height: 150px; 
+	width: 500px; 
+}
+
+#add-item-box{
+	height: 500px;
+	width: 600px;
+}
+
+.add-item-text-box{
+	width:400px;
+}
+
+#add-item-submit {
+	position: absolute;
+	top:400px;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+  color: #636363;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+  color: #636363;
+}
+
+#items-wrapper{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#items-wrapper .item-box {
+	height:880px;	
+}
+
+.review-form-div, .item-box, .review-box {
+	background-color: #FFFFFF;
+	width: 600px;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	font-style:normal;
+	font-size: small;
+	-webkit-box-shadow: 0 8px 15px -6px black;
+	   -moz-box-shadow: 0 8px 15px -6px black;
+	        box-shadow: 0 8px 15px -6px black;
+}
+
+.review-form-div {
+	margin-top: 30px;
+	clear:both;
+}
+
+.service-field,.price-field,.des-field {
+	background-color: #d3d3d3;
+	width: 500px;
+	margin-top: 10px;
+	margin-bottom: 10px; 
+	border-style:solid;
+	border-width:5px; 
+	border-color:white;
+	font-size: 15px;
+	font: verdana;
+	color: #000;
+}
+
+.service-images img{
+	margin-bottom: 20px;
+}
+
+.field-div{
+	width: 520px;
+	margin-right:auto;  
+	margin-left:auto;
+}
+
+.des-field{
+	height: 100px;
+	overflow: auto;
+}
+
+.item-form {
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 10px;
+}
+
+
+/* signup.php*/ 
+
+#verify-div {
+	width: 600px;
+	margin-top: 50px;
+	margin-right: auto; 
+	margin-left: auto;
+
+}
+
+#profile{
+	float: right;
+	margin-right: 50px; 
+	
+}
+
+#verify-form-div{
+	float: left;
+	margin-left: 50px;
+	
+}
+
+#dropbox-wrapper table{
+	margin-right: auto; 
+	margin-left: auto; 
+}
+
+#dropbox-wrapper table td{
+	padding: 30px;
+}
+
+/* item.php */
+
+.mask-review{
+	display: none;
+	width: 200px; 
+	height: 100px; 
+	background-color: #FFFFFF; 
+	opacity: 0.3; 
+	z-index:5;
+	margin-right: auto; 
+	margin-left: auto;
+} 
+
+#review-form textarea{
+	width: 350px;
+	height: 200px;
+	position: relative;
+	left: 10px;
+}
+
+.review-form-div{
+	width:500px;
+	height:400px;
+	margin-right: auto; 
+	margin-left: auto;
+	}
+
+.uploaded_item_pic{
+	height:200px;
+	width: 400px;
+}
+
+.profile-img {
+max-width:100px;
+max-height: 60px;
+}
+
+.sign_up_field {
+	background-color: #FFFFFF;
+}
+
+.dropbox2 a{
+	position: relative;
+	left: 70px;
+	top: 10px;
+}
+
+#helpbox{
+ 	height:400px;
+ 	width: 500px;
+	font-size: 20px;
+}
+
+#intro {
+	height: 300px;
+	overflow: scroll;
+}
+
+#login-failure, #login-success{
+	margin-left: auto; 
+	margin-right: auto;
+	width: 450px;
+}
+
+#forget-pass-link{
+	text-decoration: none; 
+	font-size: 10px;
+	color: #000;
+}
+
+#reset-pass-div {
+    width:300px;
+    margin-left:auto; 
+    margin-right:auto; 
+    margin-top:50px;
+}
+
+#reset-pass-form #password{
+    width:250px;
+    margin-top:80px; 
+    margin-bottom:80px;
+    height:20px;
+    -moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+
+#reset_pass_btn{
+     position:relative;
+     left:45px;    
+}
+
+#reset-pass-div span{
+    margin-left:46px;  
+}
+
+#seller .text-field a{
+    margin-top:30px;
+}

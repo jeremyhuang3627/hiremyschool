@@ -1,0 +1,48 @@
+the "from" address must be the domain email address hosted at godaddy.com and the server must be relay server
+
+
+below is an example script: 
+
+
+<?php 
+	include_once "lib/swift_required.php"; 	
+		$email="jh3627@stern.nyu.edu"; 
+
+		$e = sha1($email); 
+		$to = trim($email);
+
+                echo function_exists('proc_open') ? "Yep, that will work" : "Sorry, that won't work";
+
+		$transport = Swift_SmtpTransport::newInstance('relay-hosting.secureserver.net');
+		$mailer = Swift_Mailer::newInstance($transport);
+		
+		$msg  ="You have a new account at Galvea!
+				 
+				To get started, please activate your account and choose a
+				password by following the link below.
+				 
+				Your email: $email
+				 
+				Activate your account: http://bidinsanity.com/signup.php?v=$ver&e=$e	 
+				--
+				Thanks!
+				 
+				Jeremy
+				www.galvea.com";
+
+		$subject = "Galvea - Please Verify Your Account"; 
+
+		$message = Swift_Message::newInstance($subject)
+					  ->setFrom("info@bidinsanity.com")
+					  ->setTo($to)
+					  ->setBody($msg)
+					  ;
+	    $result = $mailer->send($message);
+	      
+	      if ($result){
+	      	echo "success! The email has been sent to: ".$to; 
+	      } else{
+	      	echo "failure!"; 
+	      }
+
+?>
